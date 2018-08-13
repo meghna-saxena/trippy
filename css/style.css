@@ -1,10 +1,8 @@
 /*
 COLORS:
-
 Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
-
 */
 
 * {
@@ -28,4 +26,42 @@ body {
     background-size: cover; 
     background-position: top; /*whenever vh is less eg mobile version, top of img always stays at the top of the container*/
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    position: relative;
 }
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 75px; /* width will scale accordingly */
+}
+
+.text-box {
+    position: absolute;
+    top: 40%; /* thses top and left specifications are in relation to parent el */
+    left: 50%;
+    transform: translate(-50%, -50%); /*nw these 50% are no longer in reltn w/ parent el, bt the el itself, so it centers the el */
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+}
+
