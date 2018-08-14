@@ -39,9 +39,9 @@ body {
     height: 75px; /* width will scale accordingly */
 }
 
-/* .logo:hover {
+.logo:hover {
     animation: moveInRight 1s ease-out;
-} */
+}
 
 .text-box {
     position: absolute;
@@ -114,6 +114,18 @@ body {
     }
 }
 
+@keyframes moveInBottom {
+    0% { 
+        opacity: 0;
+        transform: translateY(30); /* anmation starts from top to bottom so translateY() */
+    }
+
+    100% { 
+        opacity: 1;
+        transform: translate(0); /* looks the same what it is right now */
+    }
+}
+
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
@@ -122,6 +134,7 @@ body {
     display: inline-block;
     border-radius: 100px;
     transition: all .2s;
+    position: relative;
 }
 
 .btn:hover {
@@ -137,4 +150,31 @@ body {
 .btn-white {
     background-color: #fff;
     color: #777;
+}
+
+.btn::after { /* goes behind the btn */
+    content: ""; /* for letting this pseudo-element to appear on the screen we have to specify content and display property */
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* defines the position of the el, if they are on top of one another. So this pseuod-el is behind the btn */
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6); /* increase the element; scale(2) doubles the size that it had before */
+    opacity: 0; /* fades out, invisible */
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards; /* automatically applies style 0% before animation starts */
 }
